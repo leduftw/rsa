@@ -15,10 +15,7 @@ def encrypt_to_numbers(message: str, public_key: PublicKey) -> list:
 
 def decrypt_from_numbers(crypto: list, private_key: PrivateKey) -> str:
     """ Interface for decrypting messages with private key. """
-    number_crypto = crypto.copy()
-    for i, number in enumerate(number_crypto):
-        number_crypto[i] = decrypt_number(number, private_key)
-    return to_letters(number_crypto)
+    return to_letters([decrypt_number(number, private_key) for number in crypto])
 
 
 def brute_force_decrypt_from_numbers(crypto: list, public_key: PublicKey) -> str:
@@ -41,10 +38,14 @@ def to_numbers(message: str) -> list:
     """ Turns every letter in the message into number as specified in the statement.
      Given message must be in uppercase and should not contain whitespaces.
      """
+    """
+    # Old code
     result = []
     for char in message:
         result.append(ord(char) - 54)
     return result
+    """
+    return [ord(char) - 54 for char in message]  # one line with list comprehension
 
 
 def to_letters(number_message: list) -> str:
@@ -52,7 +53,4 @@ def to_letters(number_message: list) -> str:
     Numbers in list should be in range [11, 36] for proper ASCII decoding.
     [11, 36] + 54 = [65, 90], i.e. A-Z
     """
-    result = number_message.copy()
-    for i, number in enumerate(number_message):
-        result[i] = chr(number + 54)
-    return "".join(result)
+    return "".join([chr(number + 54) for number in number_message])
