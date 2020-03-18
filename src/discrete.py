@@ -21,7 +21,8 @@ def gcd(a: int, b: int) -> int:
 
 
 def xgcd(a: int, b: int) -> tuple:
-    """ Extended Euclidean algorithm.
+    """
+    Extended Euclidean algorithm.
     Returns (g, x, y) such that a*x + b*y = g = gcd(a, b).
     """
     x0, x1, y0, y1 = 0, 1, 1, 0
