@@ -2,4 +2,5 @@
 
 !src/
 !src/*.py
+!Izvestaj.pdf
 !.gitignore
