@@ -1,6 +1,6 @@
 """ Key handling. """
 
-from src.discrete import *
+from src.prime import *
 
 
 class Key:
@@ -8,16 +8,16 @@ class Key:
 
 
 class PublicKey(Key):
-    def __init__(self, n: int, e: int):
+    def __init__(self, n: int, e: int) -> None:
         self.n = n
         self.e = e
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"(n: {self.n}, e: {self.e})"
 
 
 class PrivateKey(Key):
-    def __init__(self, n: int, d: int):
+    def __init__(self, n: int, d: int) -> None:
         self.n = n
         self.d = d
 

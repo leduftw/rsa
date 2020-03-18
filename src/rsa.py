@@ -1,7 +1,7 @@
 """ Functions for encryption and decryption of messages with RSA algorithm. """
 
 from src.keys import *
-from src.discrete import *
+from src.prime import *
 
 
 def encrypt_to_numbers(message: str, public_key: PublicKey) -> list:
@@ -35,9 +35,10 @@ def decrypt_number(crypto: int, private_key: PrivateKey) -> int:
 
 
 def to_numbers(message: str) -> list:
-    """ Turns every letter in the message into number as specified in the statement.
-     Given message must be in uppercase and should not contain whitespaces.
-     """
+    """
+    Turns every letter in the message into number as specified in the statement.
+    Given message must be in uppercase and should not contain whitespaces.
+    """
     """
     # Old code
     result = []
@@ -49,7 +50,8 @@ def to_numbers(message: str) -> list:
 
 
 def to_letters(number_message: list) -> str:
-    """ Converts list of numbers into uppercase string.
+    """
+    Converts list of numbers into uppercase string.
     Numbers in list should be in range [11, 36] for proper ASCII decoding.
     [11, 36] + 54 = [65, 90], i.e. A-Z
     """

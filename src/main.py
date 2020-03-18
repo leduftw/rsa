@@ -4,6 +4,7 @@ from timeit import default_timer as timer
 
 def main():
     # PRVI ZADATAK
+    print("Task #1")
     n, e = 3233, 101
     pub_key = PublicKey(n, e)
     start = timer()
@@ -16,6 +17,7 @@ def main():
     # Najvece dozvoljeno slovo je V (ASCII 86) jer je 86 - 54 = 32.
     # Ostala veca slova W, X, Y, Z ne mogu zbog mod 33.
     # Ako je poruka napisana na latinici na srpskom jeziku, samo Z ce se izgubiti.
+    print("Task #2")
     n = [33, 33, 33]
     e = [3, 9, 7]
     public_keys = [PublicKey(nn, ee) for nn, ee in zip(n, e)]
@@ -26,7 +28,8 @@ def main():
     messages = [first_crypto, second_crypto, third_crypto]
 
     for message, public_key in zip(messages, public_keys):
-        print(brute_force_decrypt_from_numbers(message, public_key))
+        print(f"Ciphertext: {message}")
+        print(f"Plaintext: {brute_force_decrypt_from_numbers(message, public_key)}\n")
 
 
 if __name__ == "__main__":
