@@ -45,7 +45,7 @@ class Sieve:
 class ErathostenSieve(Sieve):
     def sieve(self, file: str) -> None:
         sqrt_limit = math.floor(math.sqrt(self.n)) + 1
-        memory = self.n // 2
+        memory = self.n // 2  # halving memory use because we don't have to store even numbers
         primes = [True] * memory  # False -> composite, True -> prime
 
         for i in range(3, sqrt_limit, 2):

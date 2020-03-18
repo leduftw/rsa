@@ -11,7 +11,7 @@ def main():
     private_key = PrivateKey.calculate_private_key(pub_key)
     end = timer()
     print(f"Private key is: {private_key}")
-    print(f"Calculated in {end - start} seconds.\n")
+    print(f"Private key calculated in {end - start} seconds.\n")
 
     # DRUGI ZADATAK
     # Najvece dozvoljeno slovo je V (ASCII 86) jer je 86 - 54 = 32.

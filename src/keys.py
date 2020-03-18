@@ -34,5 +34,5 @@ class PrivateKey(Key):
         d = modinv(public_key.e, phi_n)
         return cls(public_key.n, d)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"(n: {self.n}, d: {self.d})"

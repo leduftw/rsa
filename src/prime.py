@@ -5,6 +5,7 @@ Check out this website: https://www.alpertron.com.ar/ECM.HTM
 
 from src.discrete import *
 from src.sieve import *
+from os import path
 import math
 import random
 
@@ -125,18 +126,17 @@ def factorize_large(n: int) -> tuple:
     if n > 10**18:
         return factorize_small(n)  # preventing large output files
     else:
-        up_to = math.ceil(math.sqrt(n))
-        sieve = ErathostenSieve(up_to)
-        sieve.sieve(f"primes_{up_to}.txt")
+        up_to = math.ceil(math.sqrt(n))  # this means that output file will always contain p such that n % p == 0
 
-        with open(f"primes_{up_to}.txt") as primes:
-            for prime in [map(int, line.split()) for line in primes]:
-                if n % prime == 0:
-                    return prime, n // prime
-        number = prime + 2
-        while n % number != 0:
-            number += 2
-        return number, n // number
+        if not path.exists(f"primes_up_to_{up_to}.txt"):
+            sieve = ErathostenSieve(up_to)
+            sieve.sieve(f"primes_up_to_{up_to}.txt")
+
+        with open(f"primes_up_to_{up_to}.txt") as primes:
+            for line in primes:
+                for prime in map(int, line.split()):
+                    if n % prime == 0:
+                        return prime, n // prime
 
 
 if __name__ == "__main__":
@@ -145,3 +145,8 @@ if __name__ == "__main__":
          359334085968622831041960188598043661065388726959079841]
     for number in n:
         print(f'{number} - {miller_rabin(number)}')
+
+    p, q = 99996191, 99996229
+    # p, q = 1000000007, 1000000009  # it will start small factorization
+    n = p*q
+    print(factorize(n))  # requires large factorization
