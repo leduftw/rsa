@@ -1,4 +1,4 @@
-from src.rsa import *
+from src.RSA import *
 from timeit import default_timer as timer
 
 

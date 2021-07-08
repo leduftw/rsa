@@ -34,7 +34,7 @@ class Sieve:
                         if index == 0:
                             number = 2
                         else:
-                            number = 2*index + 1
+                            number = 2 * index + 1
                         primes.write(str(number))
                         primes.write(" ")
                         cnt += 1
@@ -76,14 +76,14 @@ class AtkinSieve(Sieve):
         sqrt_limit = math.floor(math.sqrt(self.n)) + 1
         for x in range(1, sqrt_limit):
             for y in range(1, sqrt_limit):
-                k = 4*x*x + y*y
+                k = 4 * x * x + y * y
                 if k < self.n and (k % 12 == 1 or k % 12 == 5):
                     primes[k] = not primes[k]
-                k = 3*x*x + y*y
+                k = 3 * x * x + y * y
                 if k < self.n and k % 12 == 7:
                     primes[k] = not primes[k]
                 if x > y:
-                    k = 3*x*x - y*y
+                    k = 3 * x * x - y * y
                     if k < self.n and k % 12 == 11:
                         primes[k] = not primes[k]
 

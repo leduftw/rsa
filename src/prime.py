@@ -3,11 +3,11 @@ Algorithms related to prime numbers.
 Check out this website: https://www.alpertron.com.ar/ECM.HTM
 """
 
+import os
+import random
+
 from src.discrete import *
 from src.sieve import *
-from os import path
-import math
-import random
 
 
 def is_prime(n: int) -> bool:
@@ -107,7 +107,7 @@ def miller_rabin(n: int) -> bool:
 
 def factorize(n: int) -> tuple:
     """ Returns pair of primes (p, q) such that p*q = n. """
-    if n < 10**12:
+    if n < 10 ** 12:
         return factorize_small(n)
     else:
         return factorize_large(n)
@@ -123,12 +123,12 @@ def factorize_small(n: int) -> tuple:
 def factorize_large(n: int) -> tuple:
     # This is much faster for larger numbers, but we first need to create file with prime numbers.
     # This can be done using Sieve of Erathostenes.
-    if n > 10**18:
+    if n > 10 ** 18:
         return factorize_small(n)  # preventing large output files
     else:
         up_to = math.ceil(math.sqrt(n))  # this means that output file will always contain p such that n % p == 0
 
-        if not path.exists(f"primes_up_to_{up_to}.txt"):
+        if not os.path.exists(f"primes_up_to_{up_to}.txt"):
             sieve = ErathostenSieve(up_to)
             sieve.sieve(f"primes_up_to_{up_to}.txt")
 
@@ -148,5 +148,5 @@ if __name__ == "__main__":
 
     p, q = 99996191, 99996229
     # p, q = 1000000007, 1000000009  # it will start small factorization
-    n = p*q
+    n = p * q
     print(factorize(n))  # requires large factorization

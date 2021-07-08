@@ -39,14 +39,7 @@ def to_numbers(message: str) -> list:
     Turns every letter in the message into number as specified in the statement.
     Given message must be in uppercase and should not contain whitespaces.
     """
-    """
-    # Old code
-    result = []
-    for char in message:
-        result.append(ord(char) - 54)
-    return result
-    """
-    return [ord(char) - 54 for char in message]  # one line with list comprehension
+    return [ord(char) - 54 for char in message]
 
 
 def to_letters(number_message: list) -> str:

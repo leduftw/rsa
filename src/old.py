@@ -1,6 +1,6 @@
 """ Some functionalities that have no use right now. """
 
-from src.rsa import *
+from src.RSA import *
 from timeit import default_timer as timer
 
 
@@ -42,7 +42,7 @@ def main():
     p, q = 3, 11
     # p = 2 ** 100 - 15
     # q = 2 ** 97 - 141
-    n, e = p*q, 7
+    n, e = p * q, 7
     public_key = PublicKey(n, e)
     print(public_key)
 
